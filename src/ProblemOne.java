@@ -13,61 +13,30 @@ import java.util.*;
 public class ProblemOne {
 	
 	public static void main(String[] args){
-		
-		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("How many numbers do you want to enter? Enter a positive " 
-						 + "whole number (e.g., 1, 5, 100, etc.).");
+		System.out.print("How many divisors do you want to enter? ");
 
-		int numDivisors = Integer.parseInt(scanner.next());
+		int numDivisors = ProblemOne.getWholeNumberInput();
 
-		while ((numDivisors < 0) | (numDivisors != (int) numDivisors)){
-			System.out.println("Sorry, that wasn't a positive whole number. "
-						   + "Please enter a positive whole number "
-						   + "(such as 4, 7, 15, etc.) to signify how many divisors "
-						   + "I should save.");
-			numDivisors = Integer.parseInt(scanner.next());
-		}
-
-		LinkedList<Integer> divisors = new LinkedList<Integer>(); // this list will hold the
-														  // divisors
+		LinkedList<Integer> divisors = new LinkedList<Integer>(); 
 
 		for (int i = 1; i <= numDivisors; i++){
 
-			System.out.println("Please input a positive whole number as the divisor and "
-						   + "press the Enter/Return key.");
+			System.out.print("Input a divisor. ");
 			
-			int divisor = Integer.parseInt(scanner.next());
-			
-			while ((divisor < 0) | (divisor != (int) divisor)){
-				System.out.println("Sorry, that wasn't a positive whole number. "
-							   + "Please enter a positive whole number "
-							   + "(such as 4, 7, 15, etc.) as the divisor.");
-							   
-				divisor = Integer.parseInt(scanner.next());
-			}
+			int divisor = ProblemOne.getWholeNumberInput();
 
 			divisors.add(divisor);
 		}
 
-		System.out.println("What positive number is the upper limit (non-inclusive) when "
-					   + "checking for multiples?");
+		System.out.print("What is the upper limit (non-inclusive) when "
+					   + "checking for multiples? ");
 
-		int upperLimit = Integer.parseInt(scanner.next()); 
+		int upperLimit = ProblemOne.getWholeNumberInput();
 
-		while ((upperLimit < 0) | (upperLimit != (int) upperLimit)){
-			System.out.println("Sorry, that wasn't a positive whole number. "
-						   + "Please enter a positive whole number "
-						   + "(such as 4, 7, 15, etc.) as the divisor.");
-						   
-			upperLimit = Integer.parseInt(scanner.next());
-		}
-
-		LinkedList<Integer> multiples = new LinkedList<Integer>(); // this list will hold the 
-														   // confirmed multiples.	
+		LinkedList<Integer> multiples = new LinkedList<Integer>(); 
 		
-
-		for (int x = upperLimit - 1; x>0; x--){		
+		for (int x = upperLimit - 1; x>0; x--){
 			
 			int y;
 
@@ -90,5 +59,31 @@ public class ProblemOne {
 		}
 		System.out.print("The sum is " + sum + ".");
 		
-	}	
+	}
+
+	public static int getWholeNumberInput() {
+
+		Scanner scanner = new Scanner(System.in);
+
+		String placeholder = "";
+		int toReturn = -1;
+
+		while ((toReturn < 0) | (toReturn != (int) toReturn)){
+
+			System.out.println("Please enter a positive whole number.");			  
+			placeholder = scanner.nextLine();
+
+			try {
+
+				toReturn = Integer.parseInt(placeholder);
+		
+			}
+
+			catch (NumberFormatException e) {
+				System.out.print("Sorry, that wasn't a whole number. ");
+			}
+		}
+
+		return toReturn;
+	}
 }
