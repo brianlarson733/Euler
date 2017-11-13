@@ -14,7 +14,7 @@ public class ProblemOne {
 
 		System.out.print("How many divisors do you want to enter? ");
 
-		int numDivisors = ProblemOne.getWholeNumberInput();
+		int numDivisors = Tools.getWholeNumberInput();
 
 		LinkedList<Integer> divisors = new LinkedList<Integer>(); 
 
@@ -22,7 +22,7 @@ public class ProblemOne {
 
 			System.out.print("Input a divisor. ");
 			
-			int divisor = ProblemOne.getWholeNumberInput();
+			int divisor = Tools.getWholeNumberInput();
 
 			divisors.add(divisor);
 		}
@@ -30,7 +30,7 @@ public class ProblemOne {
 		System.out.print("What is the upper limit (non-inclusive) when "
 					   + "checking for multiples? ");
 
-		int upperLimit = ProblemOne.getWholeNumberInput();
+		int upperLimit = Tools.getWholeNumberInput();
 
 		LinkedList<Integer> multiples = new LinkedList<Integer>(); 
 		
@@ -48,40 +48,8 @@ public class ProblemOne {
 			}
 		}		
 		
-		int sum = 0;
-
-		while (multiples.size() > 0){
-			
-			sum += multiples.poll();
-
-		}
-		System.out.print("The sum is " + sum + ".");
+		System.out.print("The sum is " + Tools.sumLinkedList(multiples) + ".");
 		
 	}
 
-	public static int getWholeNumberInput() {
-
-		Scanner scanner = new Scanner(System.in);
-
-		String placeholder = "";
-		int toReturn = -1;
-
-		while ((toReturn < 0) | (toReturn != (int) toReturn)){
-
-			System.out.println("Please enter a positive whole number.");			  
-			placeholder = scanner.nextLine();
-
-			try {
-
-				toReturn = Integer.parseInt(placeholder);
-		
-			}
-
-			catch (NumberFormatException e) {
-				System.out.print("Sorry, that wasn't a whole number. ");
-			}
-		}
-
-		return toReturn;
-	}
 }
