@@ -17,7 +17,7 @@ public class Tools {
 		String placeholder = "";
 		int toReturn = -1;
 
-		while ((toReturn < 0) | (toReturn != (int) toReturn)){
+		while ((toReturn < 1) | (toReturn != (int) toReturn)){
 			System.out.println("Please enter a positive whole number.");			  
 			placeholder = scanner.nextLine();
 			try {
