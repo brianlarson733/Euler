@@ -10,96 +10,51 @@ public class Selector {
 
 		//ProblemOne problemOne = new ProblemOne();
 		//ProblemTwo problemTwo = new ProblemTwo();
-		Object[] problems = new Object[]{new problemOne(), new problemTwo()};
-		Scanner scan = new Scanner(System.in);
-		System.out.println("I have " + problems.size + "problems you can"
-							+ " select. Here are your options to proceed:");
-		boolean running = true;
-		boolean seePrompt = false;
+		Problem[] problems = new Problem[]{new ProblemOne(), new ProblemTwo()};
 		
-		System.out.println("1) Review the prompt for a particular problem.");
-		System.out.println("2) Start the solver for a problem.");
-		System.out.println("3) Exit this launcher program.");
-		System.out.println("Which would you like? (1, 2, 3)");
-		try{
-			int choice = scan.nextline();	
+		int[] choices = new int[problems.length];
+		for (int i = 0; i < choices.length; i++){
+			choices[i]=i+1;
 		}
-		catch (NumberFormatException e) {
-			System.out.print("Sorry, that wasn't a valid option. Enter 1,"
-							+ " 2, or 3");
-		}
-		switch (choice){
-			case 1:
-				//askInput on problem number
-				//displayPrompt for problem number
-			case 2:
-				//askInput on problem number
-				//askInput on see prompt
-				//displayPrompt
-				//startSolver
-			case 3:
-				//kill switch
-			default:
-				//notValidInput
+		
+		boolean running = true;
+		
 
-		}
+		System.out.println("I have " + problems.length + " problems you can"
+							+ " select from. Here are your options to" 
+							+ " proceed:");
+		
+		System.out.println("1) Review the prompt for a problem");
+		System.out.println("2) Start the solver for a problem");
+		System.out.println("3) Exit this program");
+		
+		while(running){
+			int[] tempArray = {1, 2, 3};
+			int choice = Tools.getWholeNumberInput(tempArray);
 
-//get input
-//say not a valid option
-//see prompt
-//start solver
-
-
-		(while running){
-			System.out.println("1) Review the prompt for a particular problem.");
-			System.out.println("2) Start the solver for a problem.");
-			System.out.println("3) Exit this launcher program.");
-			System.out.println("Which would you like? (1, 2, 3)");
-			try{
-				choice = scan.nextline();	
-			}
-			catch (NumberFormatException e) {
-				System.out.print("Sorry, that wasn't a valid option. Enter 1,"
-								+ " 2, or 3");
-			}
-			if (choice == 1){
-				System.out.print("Which problem's prompt would you like to see?"
-								+ " You can enter a number between 1 and"
-								+ problems.size);
-				try{
-				choice = scan.nextline();	
-				}
-				catch (NumberFormatException e) {
-					System.out.print("Sorry, that wasn't a valid option. Enter 1,"
-									+ " 2, or 3");
-				}
-
-				// ask for problem they want to check the prompt for
-				// make getPrompt() method
-			}
-			else if (choice == 2){
+			switch (choice){
+				case 1:
+					System.out.print("Okay, which problem's prompt do you want"
+										+ " to see? ");
+					problems[Tools.getWholeNumberInput(choices)].printPrompt();
+					break;
+			
+				case 2:
+					System.out.println("Sure, which problem do you want to"
+									 + "solve?");
+					int temp = Tools.getWholeNumberInput(choices);
+					System.out.print("Would you like to see the prompt for"
+										+ "this problem? ");
+					problems[temp].startSolver(Tools.getBooleanInput());
+					
+				case 3:
+					System.out.println("Adios!");
+					running = false;
+					break;
 				
-				// get the problem choice
-
-				System.out.println("Would you like to see the prompt for this"
-									+ " problem solver? (y/n)");
-				while (!seePrompt){
-					try {
-						String str = scan.nextline();	
-					}
-					catch (NumberFormatException e) {
-						System.out.print("Sorry, that wasn't a valid option. Enter"
-									+ " y or n.");
-					}
-				}
-				// need other variable problems[choice-1].startSolver(prompt);
-			}
-			else if (choice == 3) {
-				running = false;
-			}
-			else {
-				System.out.println("Sorry, that wasn't a valid option. Please enter a choice again.");
-			}
+				default:
+					break;
+			}	
 		}
 	}
 }

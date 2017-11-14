@@ -8,7 +8,7 @@ public class Launcher {
 	public static void main(String[] args){
 		
 		Selector selector = new Selector();
-		selector.startSelector():
+		selector.startSelector();
 				
 	}
 }
