@@ -20,15 +20,14 @@ public class Selector {
 		boolean running = true;
 		
 
-		System.out.println("I have " + problems.length + " problems you can"
-							+ " select from. Here are your options to" 
-							+ " proceed:");
-		
-		System.out.println("1) Review the prompt for a problem");
-		System.out.println("2) Start the solver for a problem");
-		System.out.println("3) Exit this program");
 		
 		while(running){
+			System.out.println("I have " + problems.length + " problems you can"
+								+ " select from. Here are your options to" 
+								+ " proceed:");
+			System.out.println("1 - Review the prompt for a problem");
+			System.out.println("2 - Start the solver for a problem");
+			System.out.println("3 - Exit this program");
 			int[] tempArray = {1, 2, 3};
 			int choice = Tools.getWholeNumberInput(tempArray);
 
@@ -36,17 +35,17 @@ public class Selector {
 				case 1:
 					System.out.print("Okay, which problem's prompt do you want"
 										+ " to see? ");
-					problems[Tools.getWholeNumberInput(choices)].printPrompt();
+					problems[Tools.getWholeNumberInput(choices)-1].printPrompt();
 					break;
 			
 				case 2:
 					System.out.println("Sure, which problem do you want to"
-									 + "solve?");
-					int temp = Tools.getWholeNumberInput(choices);
+									 + " solve?");
+					int temp = Tools.getWholeNumberInput(choices) -1;
 					System.out.print("Would you like to see the prompt for"
-										+ "this problem? ");
+										+ " this problem? ");
 					problems[temp].startSolver(Tools.getBooleanInput());
-					
+					break;
 				case 3:
 					System.out.println("Adios!");
 					running = false;

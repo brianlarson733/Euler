@@ -4,7 +4,7 @@
 
 import java.util.*;
 
-public class Launcher {
+public class Start {
 	public static void main(String[] args){
 		
 		Selector selector = new Selector();

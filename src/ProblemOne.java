@@ -16,6 +16,11 @@ public class ProblemOne extends Problem {
 							+ "Find the sum of all the multiples of 3 or "
 							+ "5 below 1000.";
 
+	public void printPrompt(){
+		System.out.println("Here is the prompt:");
+		System.out.println(prompt);	
+	}
+
 	public void startSolver(boolean displayPrompt){
 		
 		if (displayPrompt) {
@@ -60,7 +65,7 @@ public class ProblemOne extends Problem {
 			}
 		}		
 		
-		System.out.print("The sum is " + Tools.sumLinkedList(multiples) + ".");
+		System.out.println("The sum is " + Tools.sumLinkedList(multiples) + ".");
 		
 	}
 
