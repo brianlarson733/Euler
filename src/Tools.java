@@ -103,4 +103,36 @@ public class Tools {
 		}
 		return toReturn;
 	}
+
+	public static long getLongWholeNumberInput() {
+		Scanner scanner = new Scanner(System.in);
+		String placeholder = "";
+		long toReturn = -1;
+
+		while ((toReturn < 1) | (toReturn != (long) toReturn)){
+			System.out.println("Please enter a positive whole number.");			  
+			placeholder = scanner.nextLine();
+			try {
+				toReturn = Long.parseLong(placeholder);
+			}
+			catch (NumberFormatException e) {}
+		}
+		return toReturn;
+	}
+
+	public static void largestPrime(long number){
+
+		Long num = new Long(number);
+		double squareRoot = Double.sqrt(num.doubleValue);
+
+		// squareRoot.longValue();
+		// test if 2, 3 are divisors
+		// find the next lowest 6k +- 1,
+		// is the number a divisor of n
+		// if no, move down to next lowest
+		// if yes, call recursion 
+		// if reach testing 5 as divisor and no dice, then return prime
+		// use longs the whole time? 
+
+	}
 }
