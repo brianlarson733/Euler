@@ -147,4 +147,24 @@ public class Tools {
 		}
 		return toReturn;
 	}
+	
+	public static boolean isPalindrome(int number){
+		
+		String toCheck = Integer.toString(number);
+		boolean toReturn = true;
+		int i = 0;
+		int j = toCheck.length()-1;
+		
+		while(toReturn & (i<j)){
+			if(toCheck.charAt(i) != toCheck.charAt(j)){
+				toReturn = false;
+			}
+			else {
+				i++;
+				j--;
+			}
+		}
+		return toReturn;
+	}
+
 }
