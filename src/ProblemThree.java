@@ -9,7 +9,6 @@ public class ProblemThree extends Problem {
 	
 	String prompt = "The prime factors of 13195 are 5, 7, 13 and 29. What is"
 					+ " the largest prime factor of the number 600851475143?";
-																9223372036854775807
 
 	public void printPrompt(){
 		System.out.println("Here is the prompt:");
@@ -23,7 +22,10 @@ public class ProblemThree extends Problem {
 		}
 
 		System.out.println("Let's get started.");
-		Tools.largestPrime(Tools.getLongWholeNumberInput());
+		System.out.println("Which number would you like me to find the largest"
+							+ " prime factor for?");
+		System.out.println("The largest prime factor is " + 
+			Tools.largestPrimeFactor(Tools.getLongWholeNumberInput()));
 
 	}
 }

@@ -8,9 +8,7 @@ public class Selector {
 
 	public void startSelector(){
 
-		//ProblemOne problemOne = new ProblemOne();
-		//ProblemTwo problemTwo = new ProblemTwo();
-		Problem[] problems = new Problem[]{new ProblemOne(), new ProblemTwo()};
+		Problem[] problems = new Problem[]{new ProblemOne(), new ProblemTwo(), new ProblemThree()};
 		
 		int[] choices = new int[problems.length];
 		for (int i = 0; i < choices.length; i++){
@@ -18,9 +16,7 @@ public class Selector {
 		}
 		
 		boolean running = true;
-		
-
-		
+				
 		while(running){
 			System.out.println("I have " + problems.length + " problems you can"
 								+ " select from. Here are your options to" 

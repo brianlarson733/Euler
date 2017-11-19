@@ -120,19 +120,31 @@ public class Tools {
 		return toReturn;
 	}
 
-	public static void largestPrime(long number){
+	public static long largestPrimeFactor(long number){
+		long toReturn = number;
+
+		if ((number % 2 == 0) & (number != 2)){
+			toReturn = largestPrimeFactor(number/2);
+			return toReturn;
+		}
+		if ((number % 3 == 0) & (number != 3)){
+			toReturn = largestPrimeFactor(number/3);
+			return toReturn;
+		}
 
 		Long num = new Long(number);
-		double squareRoot = Double.sqrt(num.doubleValue);
+		double squareRoot = Math.floor(Math.sqrt(num.doubleValue()));
 
-		// squareRoot.longValue();
-		// test if 2, 3 are divisors
-		// find the next lowest 6k +- 1,
-		// is the number a divisor of n
-		// if no, move down to next lowest
-		// if yes, call recursion 
-		// if reach testing 5 as divisor and no dice, then return prime
-		// use longs the whole time? 
-
+		for(int i=0; (6*i+5)<=squareRoot; i++){
+			if(number%(6*i+5)==0){
+				toReturn = largestPrimeFactor(number/(6*i+5));
+				return toReturn;
+			}
+			if(number%(6*i+7)==0){
+				toReturn = largestPrimeFactor(number/(6*i+7));
+				return toReturn;
+			}
+		}
+		return toReturn;
 	}
 }
