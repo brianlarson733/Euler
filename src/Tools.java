@@ -120,51 +120,6 @@ public class Tools {
 		return toReturn;
 	}
 
-	public static long largestPrimeFactor(long number){
-		long toReturn = number;
 
-		if ((number % 2 == 0) & (number != 2)){
-			toReturn = largestPrimeFactor(number/2);
-			return toReturn;
-		}
-		if ((number % 3 == 0) & (number != 3)){
-			toReturn = largestPrimeFactor(number/3);
-			return toReturn;
-		}
-
-		Long num = new Long(number);
-		double squareRoot = Math.floor(Math.sqrt(num.doubleValue()));
-
-		for(int i=0; (6*i+5)<=squareRoot; i++){
-			if(number%(6*i+5)==0){
-				toReturn = largestPrimeFactor(number/(6*i+5));
-				return toReturn;
-			}
-			if(number%(6*i+7)==0){
-				toReturn = largestPrimeFactor(number/(6*i+7));
-				return toReturn;
-			}
-		}
-		return toReturn;
-	}
-	
-	public static boolean isPalindrome(int number){
-		
-		String toCheck = Integer.toString(number);
-		boolean toReturn = true;
-		int i = 0;
-		int j = toCheck.length()-1;
-		
-		while(toReturn & (i<j)){
-			if(toCheck.charAt(i) != toCheck.charAt(j)){
-				toReturn = false;
-			}
-			else {
-				i++;
-				j--;
-			}
-		}
-		return toReturn;
-	}
 
 }

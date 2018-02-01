@@ -10,25 +10,16 @@ import java.util.*;
 
 public class ProblemOne extends Problem {
 	
-	String prompt = "If we list all the natural numbers below 10 "
+	public ProblemOne(){
+		super("If we list all the natural numbers below 10 "
 							+ "that are multiples of 3 or 5, we get 3, 5, "
 							+ "6 and 9. The sum of these multiples is 23. "
 							+ "Find the sum of all the multiples of 3 or "
-							+ "5 below 1000.";
-
-	public void printPrompt(){
-		System.out.println("Here is the prompt:");
-		System.out.println(prompt);	
+							+ "5 below 1000.");
 	}
 
-	public void startSolver(boolean displayPrompt){
+	public void solver(){
 		
-		if (displayPrompt) {
-			printPrompt();
-		}
-
-		System.out.println("Let's get started.");
-
 		System.out.print("How many divisors do you want to enter? ");
 
 		int numDivisors = Tools.getWholeNumberInput();
@@ -68,5 +59,9 @@ public class ProblemOne extends Problem {
 		System.out.println("The sum is " + Tools.sumLinkedList(multiples) + ".");
 		
 	}
+
+	//add find multiples method
+
+	public void (LinkedList<Integer> divisors)
 
 }

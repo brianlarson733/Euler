@@ -8,25 +8,23 @@ import java.util.*;
 
 public class ProblemFour extends Problem{
 
-	String prompt = "A palindromic number reads the same both ways. The"
+	public ProblemFour(){
+		super("A palindromic number reads the same both ways. The"
 					+ " largest palindrome made from the product of two"
 					+ " 2-digit numbers is 9009 = 91 × 99. Find the largest"
 					+ " palindrome made from the product of two 3-digit"
-					+ " numbers.";
-
-	public void printPrompt(){
-		System.out.println("Here is the prompt:");
-		System.out.println(prompt);	
+					+ " numbers.");
 	}
 
-	public void startSolver(boolean displayPrompt){
+	public void solver(){
 
-		if (displayPrompt) {
-			printPrompt();
-		}
-
-		System.out.println("Let's get started.");
 		System.out.println("Here is what we are doing...");
+
+		/*
+		* Goal: find largest palindrome from multiplying a set of numbers together
+		* Gather requirements:
+		*	how many numbers to multiply together
+		*	should all the factors have the same number of digits? 
 
 
 		System.out.println("Enter how many numbers you would like to multiply"
@@ -44,6 +42,27 @@ public class ProblemFour extends Problem{
 		System.out.println("The largest palindrome with " + numDigits + " digits"
 							+ " after multiplying " + numNumbers + " numbers"
 							+ " is" + toPrint);
+	}
+	*/
+	}
+
+	public boolean isPalindrome(int number){
+		
+		String toCheck = Integer.toString(number);
+		boolean toReturn = true;
+		int i = 0;
+		int j = toCheck.length()-1;
+		
+		while(toReturn & (i<j)){
+			if(toCheck.charAt(i) != toCheck.charAt(j)){
+				toReturn = false;
+			}
+			else {
+				i++;
+				j--;
+			}
+		}
+		return toReturn;
 	}
 
 
