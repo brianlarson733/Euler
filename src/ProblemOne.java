@@ -40,8 +40,16 @@ public class ProblemOne extends Problem {
 
 		int upperLimit = Tools.getWholeNumberInput();
 
-		LinkedList<Integer> multiples = new LinkedList<Integer>(); 
+		LinkedList<Integer> multiples = findMultiples(upperLimit, divisors);
 		
+		System.out.println("The sum is " + Tools.sumLinkedList(multiples) + ".");
+		
+	}
+
+	public LinkedList<Integer> findMultiples(int upperLimit, LinkedList<Integer> divisors){
+		
+		LinkedList<Integer> toReturn = new LinkedList<Integer>();
+
 		for (int x = upperLimit - 1; x>0; x--){
 			
 			int y;
@@ -52,16 +60,10 @@ public class ProblemOne extends Problem {
 			
 			if (y != divisors.size()) {
 				
-				multiples.add(x); 
+				toReturn.add(x); 
 			}
 		}		
-		
-		System.out.println("The sum is " + Tools.sumLinkedList(multiples) + ".");
-		
+		return toReturn;
 	}
-
-	//add find multiples method
-
-	public void (LinkedList<Integer> divisors)
 
 }

@@ -42,4 +42,6 @@ public class ProblemTwo extends Problem {
 
 		System.out.println("The sum of the terms is " + Tools.sumLinkedList(evenTerms));
 	}
+
+	
 }
