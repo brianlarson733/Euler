@@ -18,39 +18,52 @@ public class ProblemFour extends Problem{
 
 	public void solver(){
 
-		System.out.println("Here is what we are doing...");
-		//how many factors do you want? 
-		//how many digits for each factor? 
-		//based on number of digits create upper limit (exponential notation is helpful)
-		//based on numFactors do you do recursion? 
+		System.out.println("How many digits do you want each factor to be?");
+		int digits = Tools.getWholeNumberInput();
+
+		System.out.println("How many factors do you want to multiply together?");
+		int numFactors = Tools.getWholeNumberInput();
+		
+		int answer = 0;
+		int factorOne = (int)Math.pow(10,digits)-1;
 
 		//a*b, check isPalindrome, decrement b, once b is floored decrement a and make b under a
 
-		//for loop counting backwards
-		/*
-		* Goal: find largest palindrome from multiplying a set of numbers together
-		* Gather requirements:
-		*	how many numbers to multiply together
-		*	should all the factors have the same number of digits? 
+		answer = multiplyFactors(factorOne, numFactors-1, digits);
 
-
-		System.out.println("Enter how many numbers you would like to multiply"
-							+ " together.");
-		int numNumbers = Tools.getWholeNumberInput();
-
-		System.out.println("How many digits do you want the palindrome to"
-							+ " have?");
-		int numDigits = Tools.getWholeNumberInput();
-		int toPrint = 0;
-
-		//find largest palindrome product of two 3-digit numbers
-		//variables - how many numbers, how many digits
-		//end goal - find palindrome
-		System.out.println("The largest palindrome with " + numDigits + " digits"
-							+ " after multiplying " + numNumbers + " numbers"
-							+ " is" + toPrint);
+		if (isPalindrome(answer)){
+			System.out.println("The largest palindrome that is the product of " +
+								numFactors + " " + digits + "-digit numbers is " +
+							   answer);
+		}
+		else
+			System.out.println("There is no palindrome that is the product of " +
+								numFactors + " " + digits + "-digit numbers.");
 	}
-	*/
+
+	public static int multiplyFactors(int factorOne, int numFactors, int digits){
+		int toReturn = factorOne;
+		
+		if(numFactors==0){
+			System.out.println("recursive base case");
+			System.out.println("base toReturn is " + toReturn);
+			return toReturn;
+		}
+		
+		for(int factorTwo = factorOne; factorTwo > (Math.pow(10,digits-1) -1);factorTwo--){
+			
+			System.out.println("factorOne is " + factorOne);
+			
+			toReturn = factorOne * multiplyFactors(factorTwo, numFactors-1, 
+													digits);
+			System.out.println("loop toReturn is " + toReturn);
+			
+			if(ProblemFour.isPalindrome(toReturn)){
+				System.out.println("isPalindrome check");
+				break;
+			}
+		}
+		return toReturn;
 	}
 
 	public static boolean isPalindrome(int number){

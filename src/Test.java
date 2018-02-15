@@ -8,28 +8,16 @@ public class Test {
 
 	public static void main(String[] args){
 
-		// 1 factor
-		int digits = 3;
-		int a = (int)Math.pow(10, digits) - 1; // a is 999
-		System.out.println(ProblemFour.isPalindrome(a)+" " + a);
+		System.out.println("How many digits do you want each factor to be?");
+		int digits = Tools.getWholeNumberInput();
 
-		//2 factors
-		int numFactors = 2;
-		int digits = 3;
+		System.out.println("How many factors do you want to multiply together?");
+		int numFactors = Tools.getWholeNumberInput();
 
-		
-		int toCheck = genFactor(digits, 1);
-		int counter = toCheck - 1;
-		for(int i = numFactors; i > 0; i--){
-			toCheck = genFactor(digits, toCheck-1);
-		}
+		int answer = 0;
+		int factorOne = (int)Math.pow(10,digits)-1;
 
-		System.out.println(ProblemFour.isPalindrome(a)+" " + a);
-
-	}
-
-	public int genFactor(int numDigits, int input){
-		int a = (int)Math.pow(10, numDigits) - 1; // a is 999
-		return a * input;
+		answer = ProblemFour.multiplyFactors(factorOne, numFactors-1, digits);
+		System.out.println(answer);
 	}
 }
