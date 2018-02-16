@@ -8,7 +8,7 @@ public class Selector {
 
 	public void startSelector(){
 
-		Problem[] problems = new Problem[]{new ProblemOne(), new ProblemTwo(), new ProblemThree()};
+		Problem[] problems = new Problem[]{new ProblemOne(), new ProblemTwo(), new ProblemThree(), new ProblemFour()};
 		
 		int[] choices = new int[problems.length];
 		for (int i = 0; i < choices.length; i++){

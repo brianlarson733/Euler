@@ -11,7 +11,7 @@ public class ProblemFour extends Problem{
 	public ProblemFour(){
 		super("A palindromic number reads the same both ways. The"
 					+ " largest palindrome made from the product of two"
-					+ " 2-digit numbers is 9009 = 91 × 99. Find the largest"
+					+ " 2-digit numbers is 9009 = 91 x 99. Find the largest"
 					+ " palindrome made from the product of two 3-digit"
 					+ " numbers.");
 	}
@@ -27,8 +27,6 @@ public class ProblemFour extends Problem{
 		int answer = 0;
 		int factorOne = (int)Math.pow(10,digits)-1;
 
-		//a*b, check isPalindrome, decrement b, once b is floored decrement a and make b under a
-
 		answer = multiplyFactors(factorOne, numFactors-1, digits);
 
 		if (isPalindrome(answer)){
@@ -41,25 +39,19 @@ public class ProblemFour extends Problem{
 								numFactors + " " + digits + "-digit numbers.");
 	}
 
-	public static int multiplyFactors(int factorOne, int numFactors, int digits){
+	public int multiplyFactors(int factorOne, int numFactors, int digits){
 		int toReturn = factorOne;
 		
 		if(numFactors==0){
-			System.out.println("recursive base case");
-			System.out.println("base toReturn is " + toReturn);
 			return toReturn;
 		}
 		
 		for(int factorTwo = factorOne; factorTwo > (Math.pow(10,digits-1) -1);factorTwo--){
-			
-			System.out.println("factorOne is " + factorOne);
-			
+				
 			toReturn = factorOne * multiplyFactors(factorTwo, numFactors-1, 
 													digits);
-			System.out.println("loop toReturn is " + toReturn);
 			
 			if(ProblemFour.isPalindrome(toReturn)){
-				System.out.println("isPalindrome check");
 				break;
 			}
 		}
@@ -84,6 +76,5 @@ public class ProblemFour extends Problem{
 		}
 		return toReturn;
 	}
-
 
 }
