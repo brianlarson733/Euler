@@ -2,6 +2,9 @@
 * A palindromic number reads the same both ways. The largest palindrome made
 * from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest
 * palindrome made from the product of two 3-digit numbers.
+*
+* Note: due to recursion this solution starts to become slow once you hit 3 
+* factors.
 */
 
 import java.util.*;
@@ -21,44 +24,50 @@ public class ProblemFour extends Problem{
 		System.out.println("How many digits do you want each factor to be?");
 		int digits = Tools.getWholeNumberInput();
 
-		System.out.println("How many factors do you want to multiply together?");
+		System.out.println("How many factors do you want to multiply " + 
+		 "together?");
 		int numFactors = Tools.getWholeNumberInput();
 		
 		int answer = 0;
 		int factorOne = (int)Math.pow(10,digits)-1;
 
-		answer = multiplyFactors(factorOne, numFactors-1, digits);
+		answer = getPalindrome(factorOne, numFactors-1, digits);
 
 		if (isPalindrome(answer)){
-			System.out.println("The largest palindrome that is the product of " +
-								numFactors + " " + digits + "-digit numbers is " +
-							   answer);
+			System.out.println("The largest palindrome that is the product " +
+								"of " +	numFactors + " " + digits + "-digit " +
+								"numbers is " + answer);
 		}
 		else
-			System.out.println("There is no palindrome that is the product of " +
-								numFactors + " " + digits + "-digit numbers.");
+			System.out.println("There is no palindrome that is the product " +
+								"of " + numFactors + " " + digits + "-digit " +
+								"numbers.");
 	}
 
-	public int multiplyFactors(int factorOne, int numFactors, int digits){
-		int toReturn = factorOne;
+	public int getPalindrome(int factorOne, int numFactors, int digits){
+		int toReturn = 0;
+		int current = 0;
 		
 		if(numFactors==0){
-			return toReturn;
+			return factorOne;
 		}
-		
-		for(int factorTwo = factorOne; factorTwo > (Math.pow(10,digits-1) -1);factorTwo--){
+		for(; factorOne > (Math.pow(10,digits-1) -1); factorOne--){
+
+			for(int factorTwo = factorOne; 
+				factorTwo > (Math.pow(10,digits-1) -1);factorTwo--){
+ 		
+				current = factorOne * getPalindrome(factorTwo, numFactors-1, 
+														digits);
 				
-			toReturn = factorOne * multiplyFactors(factorTwo, numFactors-1, 
-													digits);
-			
-			if(ProblemFour.isPalindrome(toReturn)){
-				break;
+				if(isPalindrome(current) && toReturn < current){
+					toReturn = current;
+				}
 			}
 		}
 		return toReturn;
 	}
 
-	public static boolean isPalindrome(int number){
+	public boolean isPalindrome(int number){
 		
 		String toCheck = Integer.toString(number);
 		boolean toReturn = true;
@@ -76,5 +85,4 @@ public class ProblemFour extends Problem{
 		}
 		return toReturn;
 	}
-
 }
